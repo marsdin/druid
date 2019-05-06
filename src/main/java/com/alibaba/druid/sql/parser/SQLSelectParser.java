@@ -146,7 +146,7 @@ public class SQLSelectParser extends SQLParser {
                     union.setLeft(selectQuery);
                 }
 
-                boolean paren = lexer.token == Token.LPAREN;
+
 
                 if (lexer.token == Token.ALL) {
                     union.setOperator(SQLUnionOperator.UNION_ALL);
@@ -154,7 +154,9 @@ public class SQLSelectParser extends SQLParser {
                 } else if (lexer.token == Token.DISTINCT) {
                     union.setOperator(SQLUnionOperator.DISTINCT);
                     lexer.nextToken();
-                }
+                }boolean paren = lexer.token == Token.LPAREN;
+
+
                 SQLSelectQuery right = this.query(paren ? null : union, false);
                 union.setRight(right);
 
